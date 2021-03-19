@@ -16,7 +16,7 @@
   },
   "lint-staged": {
     "src/**/*": [
-      "npm lint --fix",
+      "npm lint --fix"
     ]
   },
   "keywords": [],
