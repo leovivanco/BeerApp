@@ -1,3 +1,5 @@
+import "../css/main.scss";
+
 window.onload = async function () {
   const url = "https://api.punkapi.com/v2/beers"
   const beerPromise = await fetch(url)
