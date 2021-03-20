@@ -1,8 +1,8 @@
 import '../css/main.scss'
 import $ from 'jquery'
 import modal from './modal'
-import ModalHtml from './ModalHtml'
 import { getBeers, getBeersById } from './http'
+import ModalHtml from './ModalHtml'
 import CardHtml from './CardHtml'
 
 window.onload = async function () {
@@ -21,15 +21,10 @@ window.onload = async function () {
     const t = $(this)
     getBeersById(t.data('id'))
       .then((success) => {
-        console.log(success[0])
         const { image_url, ibu, abv, description, name } = success[0]
         modal(ibu ? ibu.toString()[0] : null)
           .setContent(ModalHtml({ image_url, ibu, abv, description, name }))
           .open()
-          .addFooterBtn('Close', 'tingle-btn tingle-btn--primary', function () {
-            // here goes some logic
-            modal.close()
-          })
       })
       .catch((err) => modal(1).setContent(`Failed: ${err}`).open())
   })
