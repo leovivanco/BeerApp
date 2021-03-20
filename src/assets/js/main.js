@@ -1,34 +1,36 @@
-import "../css/main.scss";
+import '../css/main.scss'
+import $ from 'jquery'
+import modal from './modal'
+import ModalHtml from './ModalHtml'
+import { getBeers, getBeersById } from './http'
+import CardHtml from './CardHtml'
 
 window.onload = async function () {
-  const url = "https://api.punkapi.com/v2/beers"
-  const beerPromise = await fetch(url)
-      const beers = await beerPromise.json()
-      const htmlRoot = document.getElementById('root')
+  const htmlCards = document.querySelector('.cards')
+  const beers = await getBeers()
   const beersHtml = beers
-    .map((beer) => {
-      return `
-       <div class='card'>
-         <div class='beer'>
-             <img class='beer__img' src="${beer.image_url}">
-             <h3>${beer.name}</h3>
-             <span class='beer__info'>
-                 <span>ABV: ${beer.abv}%</span>
-                 <span>IBU: ${beer.ibu}</span>
-             </span>
-         </div>
-         <div class='beer__content'>
-             <div class='beer__name'>${beer.name}</div>
-             <div class='beer__tagline'>${beer.tagline}</div>
-             <div class='beer__description'>${beer.description}</div>
-             <div class='beer__food-pairing'>
-                 Pair with: ${beer.food_pairing.join(', ')}
-             </div>
-         </div>
-     </div>
-    `
-    })
+    .map(({ id, name, image_url, abv, ibu }) =>
+      CardHtml({ id, name, image_url, abv, ibu })
+    )
     .join('')
 
-  htmlRoot.innerHTML = beersHtml
+  htmlCards.innerHTML = beersHtml
+
+  $('.card').on('click', async function (event) {
+    event.preventDefault()
+    const t = $(this)
+    getBeersById(t.data('id'))
+      .then((success) => {
+        console.log(success[0])
+        const { image_url, ibu, abv, description, name } = success[0]
+        modal(ibu ? ibu.toString()[0] : null)
+          .setContent(ModalHtml({ image_url, ibu, abv, description, name }))
+          .open()
+          .addFooterBtn('Close', 'tingle-btn tingle-btn--primary', function () {
+            // here goes some logic
+            modal.close()
+          })
+      })
+      .catch((err) => modal(1).setContent(`Failed: ${err}`).open())
+  })
 }
