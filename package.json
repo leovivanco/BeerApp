@@ -45,6 +45,7 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "clean-webpack-plugin": "^2.0.0",
     "normalize.css": "^8.0.1",
     "tingle.js": "^0.16.0"

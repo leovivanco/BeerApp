@@ -1,11 +1,14 @@
+import axios from 'axios'
 const URL = 'https://api.punkapi.com/v2/beers'
 
-export const getBeers = async () => {
-  const beerPromise = await fetch(URL)
-  return await beerPromise.json()
-}
+const axiosInstance = axios.create({
+  timeout: 10000,
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers':
+      'Origin, X-Requested-With, Content-Type, Accept'
+  }
+})
 
-export const getBeersById = async (id) => {
-  const beerPromise = await fetch(`${URL}/${id}`)
-  return await beerPromise.json()
-}
+export const getBeers = () => axiosInstance(URL)
+export const getBeersById = (id) => axiosInstance(`${URL}/${id}`)
