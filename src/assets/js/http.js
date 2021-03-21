@@ -10,5 +10,5 @@ const axiosInstance = axios.create({
   }
 })
 
-export const getBeers = () => axiosInstance(URL)
-export const getBeersById = (id) => axiosInstance(`${URL}/${id}`)
+export const getBeers = () => axiosInstance.get(URL)
+export const getBeersById = (id) => axiosInstance.get(`${URL}/${id}`)
