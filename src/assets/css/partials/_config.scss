@@ -1,0 +1,21 @@
+@import '/node_modules/normalize.css/normalize.css';
+@import '/node_modules/tingle.js/dist/tingle.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+  background-color: $bg-color;
+  font-family: 'Roboto', 'Lucida Sans', sans-serif;
+}
+
+#root {
+  height: 100vh;
+}
+
+.main__title {
+  color: $main-color;
+  font-size: 3rem;
+}
+
+.container {
+  padding: 1rem;
+}

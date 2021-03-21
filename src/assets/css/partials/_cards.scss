@@ -1,0 +1,57 @@
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-gap: 1rem;
+
+  .card {
+    width: 100%;
+    background-color: $white-color;
+    display: flex;
+    flex-flow: wrap column;
+    justify-content: center;
+    margin: 0 0.1% 1rem 0;
+    padding: 1rem;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    position: relative;
+    align-content: center;
+    overflow: hidden;
+    img {
+      max-width: 100%;
+    }
+  }
+  .beer {
+    display: flex;
+    flex-flow: column;
+    &__img {
+      max-height: 200px;
+      align-self: center;
+    }
+    &__info {
+      > div {
+        position: absolute;
+        background-color: $main-color;
+        color: $white-color;
+      }
+    }
+    &__abv {
+      right: -51px;
+      top: -55px;
+      padding: 3rem;
+      transform: rotate(45deg);
+      span {
+        position: absolute;
+        bottom: 2%;
+        left: 38%;
+        font-weight: bold;
+        font-size: 14px;
+      }
+    }
+    &__ibu {
+      left: 0;
+      transform: translate(-50% 0);
+      top: 50%;
+      padding: 0.6rem;
+    }
+  }
+}

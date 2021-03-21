@@ -1,0 +1,81 @@
+@for $i from 1 through 9 {
+  &.bg#{$i} {
+    .tingle-modal-box__content {
+      background-color: rgb(random(255), random(255), random(255));
+    }
+  }
+}
+
+.modal {
+  display: flex;
+  &__title {
+    color: $main-color;
+    font-weight: bold;
+    font-size: 2rem;
+    background-color: #fff;
+    float: left;
+    padding: 0.5rem;
+  }
+  &__img {
+    max-height: 250px;
+    align-self: center;
+    position: relative;
+    z-index: 1;
+  }
+  &__container {
+    background-color: #fff;
+    width: 300px;
+    display: flex;
+    border-radius: 50%;
+    justify-content: center;
+    flex-flow: column wrap;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+    > span {
+      position: absolute;
+      padding: 0.4rem;
+      background-color: $main-color;
+      color: #fff;
+      font-weight: bold;
+      width: 100%;
+    }
+  }
+  &__ibu {
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+  }
+  &__abv {
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 0);
+    text-align: center;
+  }
+  &__description {
+    background-color: $white-color;
+    padding: 1rem;
+    font-size: 18px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+  @media screen and (max-width: 650px) {
+    flex-flow: column wrap;
+    &__container {
+      width: 100%;
+    }
+  }
+
+  .col {
+    padding: 0.4rem;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .tingle-modal-box {
+    width: 85%;
+  }
+  .tingle-modal-box__content {
+    max-height: 770px;
+  }
+}
