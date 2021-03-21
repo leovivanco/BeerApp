@@ -32,7 +32,7 @@ module.exports = merge(common, {
     new MiniCssExtractPlugin({ filename: '[name].[contentHash].css' }),
     new CleanWebpackPlugin(),
     new FaviconsWebpackPlugin({
-      logo: './src/assets/icons/icon-310x310',
+      logo: './src/assets/icons/icon-310x310.png',
       mode: 'webapp',
       manifest: './src/assets/icons/manigest.json'
     })
