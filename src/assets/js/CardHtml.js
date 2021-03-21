@@ -6,10 +6,9 @@ const CardHtml = ({ id, image_url, name, abv, ibu }) => `
     </div>
     <div class="beer__info">
       <div class="beer__abv"><span>${abv}%</span></div>
-      ${ibu ? `<div class="beer__ibu">IBU: ${ibu}</div>` : ''}
-
+      ${ibu ? `<div class="beer__ibu">IBU: ${ibu}</div>` : ""}
     </div>
   </div>
-`
+`;
 
-export default CardHtml
+export default CardHtml;
